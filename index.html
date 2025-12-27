@@ -5,27 +5,178 @@
 <title>KC2 Digital Wings Pvt Limited | SSD Bulk Sales</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-
 <style>
-body{margin:0;font-family:Segoe UI,Arial;background:#f1f3f6}
-header{background:#2874f0;color:#fff;padding:16px 30px;font-size:20px}
-.hero{background:linear-gradient(135deg,#1e3c72,#2a5298);color:#fff;text-align:center;padding:40px}
-.container{max-width:1100px;margin:auto;padding:30px}
-.card{background:#fff;padding:25px;border-radius:8px;box-shadow:0 8px 25px rgba(0,0,0,.1);animation:fade .6s}
-@keyframes fade{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+:root{
+  --primary:#2874f0;
+  --dark:#0b1f44;
+  --success:#2ecc71;
+}
 
-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:15px}
-input,textarea,select{padding:12px;border:1px solid #ccc;border-radius:5px}
-button{background:#2874f0;color:#fff;padding:14px;border:none;border-radius:5px;font-size:16px;cursor:pointer}
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background:#f1f3f6;
+  color:#333;
+}
+
+/* HEADER */
+header{
+  background:var(--primary);
+  color:#fff;
+  padding:18px 26px;
+  font-size:20px;
+  font-weight:600;
+}
+
+/* HERO */
+.hero{
+  background:linear-gradient(135deg,#1e3c72,#2a5298);
+  color:#fff;
+  text-align:center;
+  padding:45px 20px;
+}
+.hero h2{margin:0;font-size:32px}
+.hero p{opacity:.9;margin-top:10px}
+
+/* LAYOUT */
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:35px 20px;
+}
+
+.card{
+  background:#fff;
+  border-radius:12px;
+  padding:30px;
+  box-shadow:0 12px 35px rgba(0,0,0,.1);
+  animation:fadeUp .6s ease;
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:none}
+}
+
+h3{
+  margin-top:0;
+  color:var(--dark);
+}
+
+/* FORM */
+form{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:18px;
+}
+
+input,textarea,select{
+  padding:14px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  font-size:14px;
+}
+
+textarea{resize:none}
+
+.note{
+  grid-column:1/-1;
+  background:#f9fbff;
+  border-left:5px solid var(--primary);
+  padding:14px;
+  font-size:14px;
+  line-height:1.6;
+  border-radius:6px;
+}
+
+button{
+  background:var(--primary);
+  color:#fff;
+  border:none;
+  padding:15px;
+  border-radius:8px;
+  font-size:16px;
+  cursor:pointer;
+  transition:.3s;
+}
+
 button:hover{background:#1b5fd1}
 
-.note{grid-column:1/-1;background:#f9fbff;border-left:4px solid #2874f0;padding:12px;font-size:14px}
+/* MODAL */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:1000;
+}
 
-.success{display:none;margin-top:20px;background:#eafaf1;border-left:5px solid #2ecc71;padding:20px}
-.invoice{margin-top:15px;border:1px dashed #aaa;padding:15px}
+.modal-box{
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(12px);
+  border-radius:14px;
+  width:92%;
+  max-width:460px;
+  padding:30px;
+  text-align:center;
+  animation:pop .4s ease;
+}
 
-footer{background:#0b1f44;color:#fff;text-align:center;padding:12px;margin-top:30px;font-size:13px}
+@keyframes pop{
+  from{opacity:0;transform:scale(.85)}
+  to{opacity:1;transform:scale(1)}
+}
+
+.order-summary{
+  text-align:left;
+  font-size:14px;
+  margin:15px 0;
+  background:#f7f9ff;
+  padding:15px;
+  border-radius:8px;
+}
+
+.order-summary p{margin:6px 0}
+
+.qr-img{
+  max-width:220px;
+  margin:18px auto;
+}
+
+.status{
+  font-weight:600;
+  color:#e67e22;
+  margin-bottom:10px;
+}
+
+/* SUCCESS */
+.success{
+  display:none;
+  text-align:center;
+  padding:45px;
+}
+.success h2{color:var(--success)}
+.success-box{
+  background:#eafaf1;
+  padding:20px;
+  border-radius:10px;
+  margin-top:20px;
+  font-size:15px;
+}
+
+/* FOOTER */
+footer{
+  margin-top:40px;
+  background:var(--dark);
+  color:#fff;
+  text-align:center;
+  padding:14px;
+  font-size:13px;
+}
 </style>
 </head>
 
@@ -34,104 +185,125 @@ footer{background:#0b1f44;color:#fff;text-align:center;padding:12px;margin-top:3
 <header>KC2 Digital Wings Pvt Limited – SSD Bulk Sales</header>
 
 <section class="hero">
-<h2>Bulk Computer SSD Sales</h2>
-<p>Free Doorstep Delivery • ₹200 Refundable Advance • Pay Balance on Delivery</p>
+  <h2>Bulk Computer SSD Sales</h2>
+  <p>Free Doorstep Delivery • ₹200 Advance • Balance on Delivery</p>
 </section>
 
 <div class="container">
-<div class="card">
 
-<h3>Order Details</h3>
+<!-- ORDER FORM -->
+<div class="card" id="orderSection">
+<h3>Customer Details</h3>
 
 <form id="orderForm">
-<input id="name" placeholder="Full Name" required>
-<input id="mobile" placeholder="Mobile Number" required>
-<input id="location" placeholder="City / Nearby Location" required>
+  <input id="name" required placeholder="Full Name">
+  <input id="mobile" required placeholder="Mobile Number">
+  <input id="city" required placeholder="City / Location">
 
-<select id="ssd" required>
-<option value="">Select SSD</option>
-<option>128 GB SSD</option>
-<option>256 GB SSD</option>
-<option>512 GB SSD</option>
-<option>1 TB SSD</option>
-</select>
+  <select id="ssd" required>
+    <option value="">Select SSD Capacity</option>
+    <option>128 GB SSD</option>
+    <option>256 GB SSD</option>
+    <option>512 GB SSD</option>
+    <option>1 TB SSD</option>
+  </select>
 
-<input id="qty" type="number" placeholder="Quantity" required>
-<textarea id="address" placeholder="Complete Address" rows="3" required></textarea>
+  <input id="qty" type="number" required placeholder="Quantity">
+  <textarea id="address" rows="3" required placeholder="Complete Address"></textarea>
 
-<div class="note">
-✔ Available in bulk quantity<br>
-✔ ₹200 advance (Refundable)<br>
-✔ Free doorstep delivery<br>
-✔ Delivery within 5 working days<br>
-✔ Balance payable at delivery
-</div>
+  <div class="note">
+    ✔ Bulk quantity available<br>
+    ✔ ₹200 advance<br>
+    ✔ ₹100 refundable<br>
+    ✔ Free doorstep delivery<br>
+    ✔ Delivery within 5 working days
+  </div>
 
-<button type="button" onclick="payNow()">Pay ₹200 Advance</button>
+  <button type="submit">Submit & Pay</button>
 </form>
-
-<div class="success" id="successBox">
-<h3>✅ Payment Successful</h3>
-<p><b>Order Number:</b> <span id="orderNo"></span></p>
-
-<div class="invoice" id="invoice">
-<h4>Invoice</h4>
-<p><b>Company:</b> KC2 Digital Wings Pvt Limited</p>
-<p><b>Name:</b> <span id="iName"></span></p>
-<p><b>Mobile:</b> <span id="iMobile"></span></p>
-<p><b>Product:</b> <span id="iSSD"></span></p>
-<p><b>Quantity:</b> <span id="iQty"></span></p>
-<p><b>Advance Paid:</b> ₹200</p>
-<p><b>Status:</b> Order Confirmed</p>
-<p><b>Delivery:</b> Within 5 working days</p>
 </div>
 
-<button onclick="window.print()">Print Invoice</button>
+<!-- PAYMENT MODAL -->
+<div class="modal" id="paymentModal">
+  <div class="modal-box">
+    <h3>Confirm & Pay ₹200</h3>
+
+    <div class="order-summary">
+      <p><b>Order ID:</b> <span id="orderId"></span></p>
+      <p><b>Name:</b> <span id="mName"></span></p>
+      <p><b>Mobile:</b> <span id="mMobile"></span></p>
+      <p><b>Product:</b> <span id="mSSD"></span> × <span id="mQty"></span></p>
+    </div>
+
+    <img id="qrImg" class="qr-img">
+
+    <a id="upiBtn"><button>Pay via UPI App</button></a>
+
+    <div class="status">Payment Status: Pending</div>
+
+    <button onclick="confirmPayment()">Payment Done</button>
+  </div>
+</div>
+
+<!-- SUCCESS -->
+<div class="card success" id="successPage">
+  <h2>✅ Order Confirmed</h2>
+
+  <div class="success-box">
+    <p><b>Order ID:</b> <span id="sOrder"></span></p>
+    <p><b>Name:</b> <span id="sName"></span></p>
+    <p><b>Mobile:</b> <span id="sMobile"></span></p>
+    <p>Delivery within <b>5 working days</b>.</p>
+    <p>Balance amount payable at delivery.</p>
+  </div>
 </div>
 
 </div>
-</div>
 
-<footer>
-© 2025 KC2 Digital Wings Pvt Limited. All Rights Reserved.
-</footer>
+<footer>© 2025 KC2 Digital Wings Pvt Limited</footer>
 
 <script>
-function generateOrderNo(){
-return "KC2-" + Date.now();
+const upiId = "9952220611@ptaxis";
+const amount = "200";
+const merchant = "KC2 Digital Wings Pvt Limited";
+let currentOrderId = "";
+
+function generateOrderId(){
+  return "KC2-" + Math.floor(Math.random()*900000 + 100000);
 }
 
-function payNow(){
-const orderId = generateOrderNo();
+orderForm.addEventListener("submit", function(e){
+  e.preventDefault();
 
-var options = {
-  key: "rzp_test_xxxxxxxxxx", // REPLACE WITH YOUR KEY
-  amount: 20000,
-  currency: "INR",
-  name: "KC2 Digital Wings Pvt Limited",
-  description: "SSD Bulk Order Advance",
-  handler: function (response){
-    document.getElementById("successBox").style.display="block";
-    document.getElementById("orderNo").innerText = orderId;
+  currentOrderId = generateOrderId();
 
-    document.getElementById("iName").innerText = name.value;
-    document.getElementById("iMobile").innerText = mobile.value;
-    document.getElementById("iSSD").innerText = ssd.value;
-    document.getElementById("iQty").innerText = qty.value;
+  orderId.innerText = currentOrderId;
+  mName.innerText = name.value;
+  mMobile.innerText = mobile.value;
+  mSSD.innerText = ssd.value;
+  mQty.innerText = qty.value;
 
-    window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"});
-  },
-  prefill: {
-    name: name.value,
-    contact: mobile.value
-  },
-  theme: {
-    color: "#2874f0"
-  }
-};
+  const upiLink =
+    `upi://pay?pa=${upiId}&pn=${encodeURIComponent(merchant)}&am=${amount}&cu=INR`;
 
-var rzp = new Razorpay(options);
-rzp.open();
+  upiBtn.href = upiLink;
+  qrImg.src =
+    "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" +
+    encodeURIComponent(upiLink);
+
+  paymentModal.style.display = "flex";
+});
+
+function confirmPayment(){
+  paymentModal.style.display = "none";
+  orderSection.style.display = "none";
+  successPage.style.display = "block";
+
+  sOrder.innerText = currentOrderId;
+  sName.innerText = name.value;
+  sMobile.innerText = mobile.value;
+
+  window.scrollTo({top:0,behavior:"smooth"});
 }
 </script>
 
